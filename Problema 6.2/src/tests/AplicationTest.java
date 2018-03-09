@@ -2,7 +2,6 @@ package tests;
 
 import aplication.Triangle;
 
-import java.util.Vector;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
