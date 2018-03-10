@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class FactorialDecomposition 
 {
 
-	
 	public ArrayList<Integer> calculate(int number)
 	{
 		ArrayList<Integer> factors = new ArrayList<Integer>(10);
@@ -29,9 +28,31 @@ public class FactorialDecomposition
 	}
 	
 	
+	public void start()
+	{
+		this.interact();
+	}
+	
+	private void interact() 
+	{
+		IO io = new IO();
+		int number;
+		do
+		{
+			number = io.readInt("Ingrese el numero a descomponer:");
+		}while(number < 1900 && number > 2000 );
+		ArrayList<Integer> factors = this.calculate(number);
+		io.write("Descomposicion:");
+		for(int index=0; index<factors.size(); index++)
+		{
+			io.write(factors.get(index) + " ");
+		}
+	}
+
+
 	public static void main(String[] args) 
 	{
-
+		new FactorialDecomposition().start();
 	}
 
 }
