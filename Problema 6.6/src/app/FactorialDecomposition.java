@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class FactorialDecomposition 
 {
 
+
 	public ArrayList<Integer> calculate(int number)
 	{
 		ArrayList<Integer> factors = new ArrayList<Integer>(10);
