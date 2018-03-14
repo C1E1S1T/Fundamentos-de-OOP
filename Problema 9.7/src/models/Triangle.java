@@ -1,6 +1,7 @@
 package models;
 
-public class Triangle {
+public class Triangle extends Figure
+{
 
 	private double sideA;
 	private double sideB;
@@ -27,6 +28,18 @@ public class Triangle {
 	public double calculatePerimeter() 
 	{
 		return sideA + sideB + sideC;
+	}
+
+	@Override
+	public double getAmountComponents() 
+	{
+		return 3;
+	}
+
+	@Override
+	public String getName() 
+	{
+		return "Triangulo";
 	}
 
 }

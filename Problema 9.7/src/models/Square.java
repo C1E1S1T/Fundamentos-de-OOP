@@ -1,7 +1,7 @@
 package models;
 
 
-public class Square 
+public class Square extends Figure
 {
 	private double side;
 	
@@ -31,5 +31,19 @@ public class Square
 	private double getSideSquared()
 	{
 		return side * side;
+	}
+
+
+	@Override
+	public double getAmountComponents() 
+	{
+		return 1;
+	}
+
+
+	@Override
+	public String getName() 
+	{
+		return "Cuadrado";
 	}
 }

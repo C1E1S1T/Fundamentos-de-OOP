@@ -1,8 +1,7 @@
 package models;
 
-public class Circle 
+public class Circle extends Figure
 {
-
 	private double radius;
 
 	public Circle(double radius) 
@@ -23,6 +22,18 @@ public class Circle
 	public double calculatePerimeter() 
 	{
 		return 2 * radius * Math.PI;
+	}
+
+	@Override
+	public double getAmountComponents() 
+	{
+		return 1;
+	}
+
+	@Override
+	public String getName() 
+	{
+		return "Circulo";
 	}
 
 }

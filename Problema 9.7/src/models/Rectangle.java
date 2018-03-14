@@ -1,6 +1,6 @@
 package models;
 
-public class Rectangle 
+public class Rectangle extends Figure
 {
 	private double sideA;
 	private double sideB;
@@ -27,6 +27,18 @@ public class Rectangle
 		double hypotenuseA = sideA * sideA;
 		double hypotenuseB = sideB * sideB;
 		return Math.sqrt(hypotenuseA + hypotenuseB);
+	}
+
+	@Override
+	public double getAmountComponents() 
+	{
+		return 2;
+	}
+
+	@Override
+	public String getName() 
+	{
+		return "Rectangulo";
 	}
 
 }
