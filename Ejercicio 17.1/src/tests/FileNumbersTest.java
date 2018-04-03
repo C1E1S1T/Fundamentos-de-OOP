@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import models.FileNumbers;
 
-class XXXTest 
+class FileNumbersTest 
 {
 
 	@Test
