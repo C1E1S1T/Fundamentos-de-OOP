@@ -90,9 +90,10 @@ public class FileNumbers
 		return null;	
 	}
 	
-	public Integer countNegativeNumbers() 
+	public Long countNegativeNumbers() 
 	{
-		return 0;
+		ArrayList<Integer> numbers = read();
+		return numbers.stream().filter( (Integer x) -> x<0   ).count();
 	}
 	
 	

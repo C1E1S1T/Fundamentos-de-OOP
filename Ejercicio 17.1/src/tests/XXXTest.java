@@ -35,15 +35,30 @@ class XXXTest
 	}
 	
 	@Test
-	void testCountNegativeNumbers() 
+	void testCountNegativeNumbers_case0() 
 	{
 		FileNumbers fileNumbers = new FileNumbers("resources");
 		ArrayList<Integer> numbers = new ArrayList<>();
 		numbers.add(1); numbers.add(2); numbers.add(3);
 		fileNumbers.write(numbers);
-		Integer actual = fileNumbers.countNegativeNumbers();
-		Integer expected = 0;
+		Long actual = fileNumbers.countNegativeNumbers();
+		Long expected = (long) 0;
 		assertEquals(expected , actual);
 	}
+	
+	
+	@Test
+	void testCountNegativeNumbers_case2()
+	{
+		FileNumbers fileNumbers = new FileNumbers("resources");
+		ArrayList<Integer> numbers = new ArrayList<>();
+		numbers.add(-1); numbers.add(-2); numbers.add(3);
+		fileNumbers.write(numbers);
+		Long actual = fileNumbers.countNegativeNumbers();
+		Long expected = (long) 2;
+		assertEquals(expected , actual);
+	}
+	
+	
 	
 }
