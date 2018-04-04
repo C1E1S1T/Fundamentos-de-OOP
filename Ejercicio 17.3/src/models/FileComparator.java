@@ -14,10 +14,9 @@ public class FileComparator
 	public FileComparator(String path, String name) 
 	{
 		this.file = new File(path, name);
-		createFile();
 	}
 
-	private File createFile() 
+	public File create() 
 	{
 		file.getParentFile().mkdir();
 		try 
@@ -32,7 +31,7 @@ public class FileComparator
 
 	public boolean equals(FileComparator fileComparator) 
 	{
-		if( this.file.equals(fileComparator.getFile()))
+		if(this.file.equals(fileComparator.getFile()))
 		{
 			return true;
 		}
@@ -53,7 +52,7 @@ public class FileComparator
 		Path path = Paths.get(file.getAbsolutePath());
 		try (Stream<String> stream = Files.lines(path)) 
 		{
-		   stream.forEach(content::append);
+		   stream.forEach((line) ->  content.append(line+"\n") );
 		} 
 		catch (IOException e) 
 		{
