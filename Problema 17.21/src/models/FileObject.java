@@ -12,12 +12,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileNumbers 
+public class FileObject 
 {
 
 	private File file;
 
-	public FileNumbers(String path, String name) 
+	public FileObject(String path, String name) 
 	{
 		file = new File(path, name);
 	}
@@ -36,19 +36,19 @@ public class FileNumbers
 	
 	public ArrayList<Serializable> read() 
 	{
-		ArrayList<Serializable> numbers = new ArrayList<>();
-		ObjectInputStream numbersReader = instanceObjectInputStream();	
-		Serializable number = null;
+		ArrayList<Serializable> objects = new ArrayList<>();
+		ObjectInputStream objectReader = instanceObjectInputStream();	
+		Serializable object = null;
 		try 
 		{
-			while( ( number = (Serializable) numbersReader.readObject() ) != null  )
+			while( ( object = (Serializable) objectReader.readObject() ) != null  )
 			{
-				numbers.add(number);
+				objects.add(object);
 			}
 		} 
 		catch(EOFException e)
 		{
-			return numbers;
+			return objects;
 		}
 		catch (ClassNotFoundException e) 
 		{
@@ -57,13 +57,13 @@ public class FileNumbers
 		{
 			e.printStackTrace();
 		}
-		return numbers;
+		return objects;
 	}
 	
-	public void write(List<Serializable> numbers)
+	public void write(List<Serializable> objects)
 	{
 		ObjectOutputStream stream = instanceObjectOutputStream();
-		numbers.stream().forEach( 
+		objects.stream().forEach( 
 					number -> 
 						{
 							try {
