@@ -12,8 +12,8 @@ class CalculatorTest
 	@Test
 	void testAdd() 
 	{
-		Calculator calculator = new Calculator();
-		Double actual = calculator.add(3.0,4.0);
+		Calculator calculator = new Calculator(3.0,4.0);
+		Double actual = calculator.add();
 		Double expected = 7.0;
 		assertEquals(expected,actual);
 	}
@@ -21,8 +21,8 @@ class CalculatorTest
 	@Test
 	void testSubstract() 
 	{
-		Calculator calculator = new Calculator();
-		Double actual = calculator.subtract(4.0,5.0);
+		Calculator calculator = new Calculator(4.0,5.0);
+		Double actual = calculator.subtract();
 		Double expected = -1.0;
 		assertEquals(expected,actual);
 	}
@@ -30,8 +30,8 @@ class CalculatorTest
 	@Test
 	void testDivide() 
 	{
-		Calculator calculator = new Calculator();
-		Double actual = calculator.divide(10.0,5.0);
+		Calculator calculator = new Calculator(10.0,5.0);
+		Double actual = calculator.divide();
 		Double expected = 2.0;
 		assertEquals(expected,actual);
 	}
@@ -39,8 +39,8 @@ class CalculatorTest
 	@Test
 	void testMultiply() 
 	{
-		Calculator calculator = new Calculator();
-		Double actual = calculator.multiply(10.0,5.0);
+		Calculator calculator = new Calculator(10.0,5.0);
+		Double actual = calculator.multiply();
 		Double expected = 50.0;
 		assertEquals(expected,actual);
 	}
