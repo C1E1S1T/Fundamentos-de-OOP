@@ -8,7 +8,7 @@ public class Calculator
 		return a+b;
 	}
 
-	public Double substract(double a, double b) 
+	public Double subtract(double a, double b) 
 	{
 		return a-b;
 	}

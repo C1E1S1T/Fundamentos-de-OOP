@@ -22,7 +22,7 @@ class CalculatorTest
 	void testSubstract() 
 	{
 		Calculator calculator = new Calculator();
-		Double actual = calculator.substract(4.0,5.0);
+		Double actual = calculator.subtract(4.0,5.0);
 		Double expected = -1.0;
 		assertEquals(expected,actual);
 	}
