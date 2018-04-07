@@ -1,6 +1,7 @@
 package app;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.File;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import javax.swing.JFrame;
 import com.raysmond.player.BasicPlayer;
 import com.raysmond.player.BasicPlayerException;
 
+import views.JavaFilesView;
+import views.PlayerMusicView;
 import views.WelcomeView;
 
 public abstract class UIAplication 
@@ -30,6 +33,7 @@ public abstract class UIAplication
 		frame.setSize(calculateWindowSize());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
+		frame.setLayout( new GridLayout(0,1)   );
 		frame.setIconImage(new ImageIcon(resourcesPath, "icon.png").getImage());
 	}
 	
@@ -67,9 +71,9 @@ public abstract class UIAplication
 		playBackgroundMusic("Background","mp3");
 		ArrayList<View> views = new ArrayList<>();
 		views.add(new WelcomeView());
-		
-		views.forEach( (view) -> frame.add(view)       );
-		
+		views.add(new PlayerMusicView());
+		views.add(new JavaFilesView());
+		views.forEach( (view) -> frame.add(view)  );
 		frame.setVisible(true);
 	}
 	
