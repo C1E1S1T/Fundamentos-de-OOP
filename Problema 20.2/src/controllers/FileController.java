@@ -34,12 +34,10 @@ public class FileController extends Controller
 		 JOptionPane.showMessageDialog(view, "Nombre de archivo inválido", "Archivo inválido", JOptionPane.ERROR_MESSAGE);
 		}
 		FileComparator fileComparator = new FileComparator(file);
-		
 		JLabel path = (JLabel) view.getComponent("lbPath");
 		path.setText(file.getPath());
 		JTextArea content = (JTextArea) view.getComponent("txtContent");
 		content.setText( fileComparator.read()  );
-		
 	}
 
 }
