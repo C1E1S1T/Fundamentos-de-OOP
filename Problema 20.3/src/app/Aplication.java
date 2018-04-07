@@ -1,11 +1,17 @@
 package app;
 
-public class Aplication {
+public class Aplication extends UIAplication
+{
+
+	public Aplication(String nameApp) 
+	{
+		super(nameApp);
+	}
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
-
+		new Aplication("Aprendiendo Swing").start();
 	}
 
+	
 }
