@@ -3,12 +3,15 @@ package app;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import com.raysmond.player.BasicPlayer;
 import com.raysmond.player.BasicPlayerException;
+
+import views.WelcomeView;
 
 public abstract class UIAplication 
 {
@@ -61,7 +64,12 @@ public abstract class UIAplication
 
 	public void start()
 	{
-		playBackgroundMusic("Background2","mp3");
+		playBackgroundMusic("Background","mp3");
+		ArrayList<View> views = new ArrayList<>();
+		views.add(new WelcomeView());
+		
+		views.forEach( (view) -> frame.add(view)       );
+		
 		frame.setVisible(true);
 	}
 	
