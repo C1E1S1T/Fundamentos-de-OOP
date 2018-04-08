@@ -1,10 +1,17 @@
 package app;
 
-public class Aplication {
+public class Aplication extends UIAplication
+{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Aplication(String nameApp, String resourcesPath) 
+	{
+		super(nameApp, resourcesPath);
 	}
 
+	public static void main(String[] args) 
+	{
+		new Aplication("#FelizCumpleanos","resources").start();
+	}
+
+	
 }
