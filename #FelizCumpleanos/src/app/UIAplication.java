@@ -1,6 +1,7 @@
 package app;
 
 import java.awt.Dimension;
+
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.File;
@@ -11,10 +12,16 @@ import javax.swing.JFrame;
 import com.raysmond.player.BasicPlayer;
 import com.raysmond.player.BasicPlayerException;
 
+import controllers.CongratulationController;
+import controllers.Controller;
+import views.CongratulationView;
+import views.ImageView;
+
 public abstract class UIAplication 
 {
-	private JFrame frame;
+	public static JFrame frame;
 	private String resourcesPath;
+	private BasicPlayer player;
 	
 	public UIAplication(String nameApp, String resourcesPath)
 	{
@@ -25,26 +32,26 @@ public abstract class UIAplication
 	
 	private void designFrame()
 	{
+		frame.setBounds(100, 100, 450, 300);
 		frame.setSize(calculateWindowSize());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
-		frame.setLayout( new GridLayout(0,1)   );
-		String imagePath = "resources\\logo.png";
-		frame.setIconImage(new ImageIcon(imagePath).getImage());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setIconImage(new ImageIcon(this.getClass().getResource("/logo.png")).getImage());
+		frame.getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 	}
 	
 	private Dimension calculateWindowSize()
 	{
 		Dimension screenSize =  Toolkit.getDefaultToolkit().getScreenSize();
-		Integer width = (int) screenSize.getWidth()/2;
-		Integer heigth = (int) screenSize.getHeight()/2;
+		Integer width = (int) screenSize.getWidth();
+		Integer heigth = (int) ((int) screenSize.getHeight() * 0.96);
 		Dimension windowSize =  new Dimension(width,heigth);
 		return windowSize;
 	}
 	
 	private void playBackgroundMusic(String name, String audioFormat)
 	{
-		BasicPlayer player = new BasicPlayer();
+		player = new BasicPlayer();
 		String soundName = name+"."+audioFormat;
 		try 
 		{
@@ -64,7 +71,17 @@ public abstract class UIAplication
 
 	public void start()
 	{
-		playBackgroundMusic("Background","mp3");
+		Controller controller;
+		
+		View imageView = new ImageView();
+		controller = null;
+		frame.add(imageView.interact(controller));
+		
+		View congratulationView = new CongratulationView();
+		controller = new CongratulationController(congratulationView);
+		frame.add(congratulationView.interact(controller));
+		
+		playBackgroundMusic("Migos","mp3");
 		frame.setVisible(true);
 	}
 	

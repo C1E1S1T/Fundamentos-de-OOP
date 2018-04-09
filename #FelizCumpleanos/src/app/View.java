@@ -1,25 +1,24 @@
 package app;
 
+import java.awt.Component;
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import controllers.Controller;
 
-public abstract class View extends JPanel
+public abstract class View
 {
-	protected Map<String,JComponent> components;
-	
-	private static final long serialVersionUID = 7165287378153026073L;
-	public abstract Map<String,JComponent> getMap();
+	protected Map<String, Component> components;
 	
 	public View()
 	{
-		components = getMap();
+		components = new HashMap<>();
 	}
 	
-	public JComponent getComponent(String nameCompontent)
+	public abstract Component interact(Controller controller);
+	public Component getComponent(String nameCompontent)
 	{
-		return components.get(nameCompontent);
+		return components.get(nameCompontent); 
 	}
-	
+	public abstract Component getContainer();
 }
