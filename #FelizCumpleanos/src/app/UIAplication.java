@@ -12,22 +12,23 @@ import javax.swing.JFrame;
 import com.raysmond.player.BasicPlayer;
 import com.raysmond.player.BasicPlayerException;
 
-import controllers.CongratulationController;
+import controllers.ReadMessageController;
+import controllers.ChangeMusicController;
 import controllers.Controller;
+import controllers.PlayController;
 import views.CongratulationView;
 import views.ImageView;
 
 public abstract class UIAplication 
 {
 	public static JFrame frame;
-	private String resourcesPath;
-	private BasicPlayer player;
+	private static BasicPlayer player;
 	
-	public UIAplication(String nameApp, String resourcesPath)
+	public UIAplication(String nameApp)
 	{
 		frame = new JFrame(nameApp+" - CEST");
 		designFrame();
-		this.resourcesPath = resourcesPath;
+		player = new BasicPlayer();
 	}
 	
 	private void designFrame()
@@ -49,39 +50,50 @@ public abstract class UIAplication
 		return windowSize;
 	}
 	
-	private void playBackgroundMusic(String name, String audioFormat)
+	public static void playBackgroundMusic(String soundName)
 	{
-		player = new BasicPlayer();
-		String soundName = name+"."+audioFormat;
 		try 
 		{
-			player.open(new File(resourcesPath,soundName));
+			player.open(new File(soundName));
 		} catch (BasicPlayerException e) 
 		{
 			e.printStackTrace();
 		}
-		try 
+		boolean isPlaying = player.getStatus() == 0;
+		if(isPlaying)
 		{
-			player.play();
-		} catch (BasicPlayerException e) 
+			try {
+				player.pause();		
+				player.play();
+			} catch (BasicPlayerException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		else
 		{
-			e.printStackTrace();
+			try 
+			{
+				player.play();
+			} catch (BasicPlayerException e) 
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 
 	public void start()
 	{
-		Controller controller;
-		
 		View imageView = new ImageView();
-		controller = null;
-		frame.add(imageView.interact(controller));
+		frame.add(imageView.interact());
 		
 		View congratulationView = new CongratulationView();
-		controller = new CongratulationController(congratulationView);
-		frame.add(congratulationView.interact(controller));
+		Controller controller = new ReadMessageController(congratulationView);
+		Controller controller2 = new  ChangeMusicController(congratulationView);
+		Controller controller3 = new PlayController(congratulationView);
+		frame.add(congratulationView.interact(controller,controller2, controller3));
 		
-		playBackgroundMusic("Migos","mp3");
+		playBackgroundMusic("resources\\Walk It Talk It.mp3");
 		frame.setVisible(true);
 	}
 	

@@ -33,7 +33,7 @@ public class ImageView extends View
 	}
 
 	@Override
-	public JComponent interact(Controller controller) 
+	public JComponent interact(Controller...controllers) 
 	{
 		designView();
 		return container;

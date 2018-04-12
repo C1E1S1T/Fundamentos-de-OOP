@@ -7,21 +7,21 @@ import app.View;
 import models.FileComparator;
 import views.MessageView;
 
-public class CongratulationController extends Controller 
+public class ReadMessageController extends Controller 
 {
 
-	public CongratulationController(View view) 
+	public ReadMessageController(View view) 
 	{
 		super(view);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent event)
 	{
-		File file = new File("resources\\message.txt");
+		File file = new File("resources","Message.txt");
 		FileComparator message = new FileComparator(file);
 		MessageView messageView = new MessageView();
-		messageView.interact(message.read());
+		messageView.interact(message.read());	
 	}
 
 }

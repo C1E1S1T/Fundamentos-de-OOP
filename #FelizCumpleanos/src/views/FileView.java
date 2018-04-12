@@ -31,10 +31,10 @@ public class FileView extends View
 	}
 
 	@Override
-	public JComponent interact(Controller controller) 
+	public JComponent interact(Controller...controller) 
 	{
 		designView();
-		search.addActionListener(controller);
+		search.addActionListener(controller[0]);
 		return filePanel;
 	}
 	

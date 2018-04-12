@@ -32,10 +32,15 @@ public class CongratulationView extends View
 	}
 	
 	@Override
-	public JComponent interact(Controller controller) 
+	public JComponent interact(Controller...controller) 
 	{
 		designView();
-		btnReadMessage.addActionListener(controller);
+		btnReadMessage.addActionListener(controller[0]);
+		components.put("btnReadMessage", btnReadMessage);
+		btnChangeMusic.addActionListener(controller[1]);
+		components.put("btnChangeMusic", btnChangeMusic);
+		btnPlay.addActionListener(controller[2]);
+		components.put("btnPlay", btnPlay);
 		return container;
 	}
 	

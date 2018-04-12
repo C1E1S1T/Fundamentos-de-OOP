@@ -15,7 +15,7 @@ public abstract class View
 		components = new HashMap<>();
 	}
 	
-	public abstract Component interact(Controller controller);
+	public abstract Component interact(Controller...controllers);
 	public Component getComponent(String nameCompontent)
 	{
 		return components.get(nameCompontent); 

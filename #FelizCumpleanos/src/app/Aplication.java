@@ -3,14 +3,14 @@ package app;
 public class Aplication extends UIAplication
 {
 
-	public Aplication(String nameApp, String resourcesPath) 
+	public Aplication(String nameApp) 
 	{
-		super(nameApp, resourcesPath);
+		super(nameApp);
 	}
 
 	public static void main(String[] args) 
 	{
-		new Aplication("#FelizCumpleanos","resources").start();
+		new Aplication("#FelizCumpleanos").start();
 	}
 
 	

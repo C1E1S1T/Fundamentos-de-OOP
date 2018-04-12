@@ -19,12 +19,12 @@ public class MessageView extends View
 	
 	public MessageView()
 	{
-		container = new JDialog();
+		container = new JDialog(UIAplication.frame);
 		content = new JTextArea(5,10);
 	}
 	
 	@Override
-	public Component interact(Controller controller) 
+	public Component interact(Controller...controller) 
 	{
 		designView();
 		container.setVisible(true);
@@ -43,12 +43,10 @@ public class MessageView extends View
 	
 	private void designView() 
 	{
-		container.setLocationRelativeTo(null);
 		container.setModal(false);
 		container.setSize(calculateWindowSize());
 		container.setLocationRelativeTo(UIAplication.frame);
 		container.setTitle("Carta de cumpleanos");
-		container.setIconImage(UIAplication.frame.getIconImage());
 		content.setFont(new Font("Times New Roman",Font.PLAIN,16));
 	}
 
@@ -68,6 +66,4 @@ public class MessageView extends View
 	}
 	
 	
-	
-
 }
