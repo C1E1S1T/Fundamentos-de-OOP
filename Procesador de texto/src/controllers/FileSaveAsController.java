@@ -9,20 +9,22 @@ import javax.swing.JOptionPane;
 import models.FileStream;
 import views.FileView;
 import views.TextView;
+import views.UIView;
 
 public class FileSaveAsController implements OperationController
 {
 	private TextView text;
+	private FileView fileView;
 	
 	public FileSaveAsController()
 	{
 		text = TextView.getInstance();
+		fileView = FileView.getInstance();
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent event) 
 	{
-		FileView fileView = new FileView();
 		File file = fileView.save();
 		if(file != null)
 		{
@@ -30,6 +32,7 @@ public class FileSaveAsController implements OperationController
 			try 
 			{
 				fileStream.write(text.getContent());
+				UIView.setTitle(file.getName());
 			} catch (IOException exeption) 
 			{
 				String title = "Habido un error al escribir el archivo";

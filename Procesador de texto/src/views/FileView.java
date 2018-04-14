@@ -7,9 +7,10 @@ import javax.swing.JFileChooser;
 public class FileView 
 {
 	private JFileChooser fileChooser;
+	private File file;
+	private static FileView fileView;
 	
-	
-	public FileView()
+	private FileView()
 	{
 		fileChooser = new JFileChooser();
 	}
@@ -20,7 +21,8 @@ public class FileView
 		int userSelection = fileChooser.showSaveDialog(UIView.frame);
 		if(userSelection == JFileChooser.APPROVE_OPTION)
 		{
-			return fileChooser.getSelectedFile();
+			file = fileChooser.getSelectedFile();
+			return file;
 		}
 		return null;
 	}
@@ -31,9 +33,25 @@ public class FileView
 		int userSelection = fileChooser.showOpenDialog(UIView.frame);
 		if(userSelection == JFileChooser.APPROVE_OPTION)
 		{
-			return fileChooser.getSelectedFile();
+			file = fileChooser.getSelectedFile();
+			return file;
 		}
 		return null;
 	}
+	
+	public File getFile()
+	{
+		return file;
+	}
+
+	public static FileView getInstance() 
+	{
+		if(fileView == null)
+		{
+			fileView = new FileView();
+		}
+		return fileView;
+	}
+	
 
 }

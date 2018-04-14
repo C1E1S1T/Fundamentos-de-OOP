@@ -7,7 +7,7 @@ import javax.swing.JMenuItem;
 import java.util.ArrayList;
 
 import javax.swing.JMenu;
-import javax.swing.SwingConstants;
+
 
 import controllers.OperationController;
 
@@ -15,8 +15,10 @@ public class MenuView extends JPanel
 {
 	private static final long serialVersionUID = -1132848775061633807L;
 	private static MenuView menu;
+	
 	private JMenuItem mntmGuardarComo;
 	private JMenuItem mntmAbrir;
+	private JMenuItem mntmGuardar;
 	
 	/**
 	 * Create the panel.
@@ -34,6 +36,9 @@ public class MenuView extends JPanel
 		
 		mntmGuardarComo = new JMenuItem("Guardar como");
 		mnArchivo.add(mntmGuardarComo);	
+		
+		mntmGuardar= new JMenuItem("Guardar");
+		mnArchivo.add(mntmGuardar);	
 	}
 
 	public static MenuView getInstance()
@@ -49,7 +54,7 @@ public class MenuView extends JPanel
 	{
 		mntmGuardarComo.addActionListener(controllers.get(0));
 		mntmAbrir.addActionListener(controllers.get(1));
-			
+		mntmGuardar.addActionListener(controllers.get(2));
 	}
 	
 	

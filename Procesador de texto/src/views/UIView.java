@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
+import app.Aplication;
 import app.View;
 import controllers.OperationController;
 
@@ -17,9 +18,9 @@ public class UIView implements View
 	private MenuView menu;
 	private TextView textView;
 	
-	public UIView(String nameApp) 
+	public UIView() 
 	{
-		frame = new JFrame(nameApp);
+		frame = new JFrame();
 		menu = MenuView.getInstance();
 		textView = TextView.getInstance();
 	}
@@ -36,6 +37,7 @@ public class UIView implements View
 
 	private void designView() 
 	{
+		setTitle("Nuevo");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setSize(calculateWindowSize(0.96, 1.0));
 		frame.setLocationRelativeTo(null);
@@ -50,6 +52,11 @@ public class UIView implements View
 		Integer heigth = (int) ((int) screenSize.getHeight() * heightPercentage);
 		Dimension windowSize =  new Dimension(width,heigth);
 		return windowSize;
+	}
+
+	public static void setTitle(String name) 
+	{
+		frame.setTitle( name + " - " + Aplication.nameApp);
 	}
 	
 	

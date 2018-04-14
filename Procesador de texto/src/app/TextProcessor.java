@@ -13,7 +13,7 @@ public abstract class TextProcessor
 	public void start()
 	{	
 		Logic logic = new LocalLogic();
-		View frame = new UIView("TextProcessor");
+		View frame = new UIView();
 		HashMap<String, ArrayList<OperationController>> controllers = logic.getOperationController();
 		frame.interact(controllers);
 	}

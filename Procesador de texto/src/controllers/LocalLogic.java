@@ -15,6 +15,7 @@ public class LocalLogic implements Logic
 		HashMap<String, ArrayList<OperationController>> packageController = new HashMap<>();
 		menuControllers.add(new FileSaveAsController());
 		menuControllers.add(new FileOpenController());
+		menuControllers.add(new FileSaveController());
 		packageController.put("MenuControllers", menuControllers);
 		return packageController;
 	}

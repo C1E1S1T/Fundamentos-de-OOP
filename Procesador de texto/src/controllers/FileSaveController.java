@@ -1,14 +1,43 @@
 package controllers;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 
-public class FileSaveController implements OperationController {
+import javax.swing.JOptionPane;
 
-	@Override
-	public void actionPerformed(ActionEvent e) 
+import models.FileStream;
+import views.FileView;
+import views.TextView;
+
+public class FileSaveController implements OperationController 
+{
+	private TextView text;
+	private FileView fileView;
+	
+	public FileSaveController()
 	{
-		// TODO Auto-generated method stub
-
+		text = TextView.getInstance();
+		fileView =  FileView.getInstance();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent event) 
+	{
+		File file = fileView.getFile();
+		if(file != null)
+		{
+			FileStream fileStream = new FileStream(file);
+			try 
+			{
+				fileStream.write(text.getContent());
+			} catch (IOException exeption) 
+			{
+				String title = "Habido un error al escribir el archivo";
+				int iconMessage = JOptionPane.WARNING_MESSAGE;
+				JOptionPane.showMessageDialog(null,exeption.getMessage(),title, iconMessage);
+			}
+		}
 	}
 
 }
